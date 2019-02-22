@@ -19,6 +19,8 @@ namespace EF3_CodeFirst_1
 
           private void Form1_Load(object sender, EventArgs e)
           {
+               // 2 nesne oluşturup kaydettik.
+
                OKUL ctx = new OKUL();
                Veli v1 = new Veli();
                v1.VeliAd = "Veli";

@@ -34,7 +34,24 @@ namespace EF_DbFirst_2
 
                okul_ctx.Notlars.Add(n1);
 
+
+
+
+
+
+
+
+
+               //--------------------------
+               //ENUM Kullanımı.
+               // Design ekranında enum yapmak istediğimiz özelliğe sağ tıkladık Convert To Enum dedik.
+               Dersler d1 = new Dersler();
+               d1.DersAdi = "Fizik";
+               d1.DersTipi = DersTipi.Sayısal;
                okul_ctx.SaveChanges();
+
+
+
                
           }
      }

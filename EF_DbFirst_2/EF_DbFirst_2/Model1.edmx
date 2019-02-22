@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Okul_VTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Okul_VTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dersler">
           <Key>
             <PropertyRef Name="DersID" />
           </Key>
           <Property Name="DersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DersAdi" Type="nvarchar" MaxLength="20" />
+          <Property Name="DersTipi" Type="tinyint" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -132,18 +133,10 @@ warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key de
     FROM [dbo].[Notlar] AS [Notlar]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Okul_VTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Dersler">
-          <Key>
-            <PropertyRef Name="DersID" />
-          </Key>
-          <Property Name="DersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DersAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Ogrenciler">
           <Key>
             <PropertyRef Name="OgrenciID" />
@@ -179,7 +172,6 @@ warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key de
           <Property Name="Not2" Type="Int32" />
         </EntityType>
         <EntityContainer Name="Okul_VTEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Derslers" EntityType="Self.Dersler" />
           <EntitySet Name="Ogrencilers" EntityType="Self.Ogrenciler" />
           <EntitySet Name="Ogretmenlers" EntityType="Self.Ogretmenler" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -194,27 +186,27 @@ warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key de
             <Parameter Name="Not2" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Not_Sil">
-            <Parameter Name="index" Mode="In" Type="Int32" />
+          <Parameter Name="index" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Ogrenci_Kaydet">
-            <Parameter Name="OgrenciAdi" Mode="In" Type="String" />
+          <Parameter Name="OgrenciAdi" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OgrenciAdi_Güncelle">
             <Parameter Name="OgrenciAdi" Mode="In" Type="String" />
             <Parameter Name="index" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="OgrenciAdi_Sil">
-            <Parameter Name="index" Mode="In" Type="Int32" />
+          <Parameter Name="index" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Ogretmen_Kaydet">
-            <Parameter Name="OgretmenAdi" Mode="In" Type="String" />
+          <Parameter Name="OgretmenAdi" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OgretmenAdi_Güncelle">
             <Parameter Name="OgretmenAdi" Mode="In" Type="String" />
             <Parameter Name="index" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="OgretmenAdi_Sil">
-            <Parameter Name="index" Mode="In" Type="Int32" />
+          <Parameter Name="index" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -251,6 +243,7 @@ warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key de
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Derslers" EntityType="Okul_VTModel.Dersler" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -273,20 +266,27 @@ warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key de
           <Property Type="String" Name="OgrenciAdi" Nullable="false" MaxLength="20" />
           <Property Type="Boolean" Name="Mezun" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Dersler">
+          <Key>
+            <PropertyRef Name="DersID" />
+          </Key>
+          <Property Name="DersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DersAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DersTipi" Type="Okul_VTModel.DersTipi" />
+        </EntityType>
+        <EnumType Name="DersTipi" UnderlyingType="Byte">
+          <Member Name="Sayısal" Value="0" />
+          <Member Name="Sözel" Value="1" />
+          <Member Name="Yetenek" Value="2" />
+          <Member Name="EsitAğırlık" Value="3" />
+          <Member Name="Dil" Value="4" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Okul_VTModelStoreContainer" CdmEntityContainer="Okul_VTEntities">
-          <EntitySetMapping Name="Derslers">
-            <EntityTypeMapping TypeName="Okul_VTModel.Dersler">
-              <MappingFragment StoreEntitySet="Dersler">
-                <ScalarProperty Name="DersID" ColumnName="DersID" />
-                <ScalarProperty Name="DersAdi" ColumnName="DersAdi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Ogrencilers">
             <EntityTypeMapping TypeName="Okul_VTModel.Ogrenciler">
               <MappingFragment StoreEntitySet="Ogrenciler">
@@ -391,6 +391,15 @@ warning 6002: The table/view 'Okul_VT.dbo.Notlar' does not have a primary key de
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Okul_VTModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Okul_VTModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Derslers">
+            <EntityTypeMapping TypeName="Okul_VTModel.Dersler">
+              <MappingFragment StoreEntitySet="Dersler">
+                <ScalarProperty Name="DersTipi" ColumnName="DersTipi" />
+                <ScalarProperty Name="DersAdi" ColumnName="DersAdi" />
+                <ScalarProperty Name="DersID" ColumnName="DersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

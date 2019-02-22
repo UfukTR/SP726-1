@@ -27,11 +27,11 @@ namespace EF_DbFirst_2
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Dersler> Derslers { get; set; }
         public virtual DbSet<Ogrenciler> Ogrencilers { get; set; }
         public virtual DbSet<Ogretmenler> Ogretmenlers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Notlar> Notlars { get; set; }
+        public virtual DbSet<Dersler> Derslers { get; set; }
     
         public virtual int Not_Güncelle(Nullable<int> not1, Nullable<int> not2, Nullable<int> index)
         {

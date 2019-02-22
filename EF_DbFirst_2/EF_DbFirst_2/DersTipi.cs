@@ -10,12 +10,13 @@
 namespace EF_DbFirst_2
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Dersler
+    public enum DersTipi : byte
     {
-        public int DersID { get; set; }
-        public string DersAdi { get; set; }
-        public Nullable<DersTipi> DersTipi { get; set; }
+        Sayısal = 0,
+        Sözel = 1,
+        Yetenek = 2,
+        EsitAğırlık = 3,
+        Dil = 4
     }
 }

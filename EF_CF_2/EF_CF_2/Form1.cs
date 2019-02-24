@@ -1,4 +1,5 @@
-﻿using System;
+﻿/// Mehmet DEMİR tarafından oluşturulmuştur. Sorularınız için: mail.mehmetdemir@gmail.com
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,7 +36,23 @@ namespace EF_CF_2
 
 
             // 3: Context ve Entity sınıflarını oluşturduk.
+            // 4: Sınıf özelliklerine nitelik değiştirme yaptık(ad,boyut,foreignkey,primarykey vs..)
 
+            // 5: [inverseproperty] : başka bir sınıftan 2 nesne(2 foreign key) tanımlarken linkten açıklanacak.
+            // http://www.entityframeworktutorial.net/code-first/inverseproperty-dataannotations-attribute-in-code-first.aspx
+
+            // 6: [ConcurrencyCheck] aşağıdaki linkten açıklanacak.
+            //http://www.entityframeworktutorial.net/code-first/concurrencycheck-dataannotations-attribute-in-code-first.aspx
+
+            // 7: [ConcurrencyCheck]
+
+            // Migration linkten anlatılacak.
+            // 8: http://www.entityframeworktutorial.net/code-first/migration-in-code-first.aspx
+
+            // Otomatik migration için: Herşeyi tamamldıktan sonra aşağıdaki komutları sıra ile girdik.
+            // Tools -> NuGet Package Manager -> Nuget Package Manager Console
+            // enable-migrations –EnableAutomaticMigration:$true -Force
+            // PM> Update-Database
         }
     }
 }

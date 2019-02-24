@@ -18,7 +18,7 @@ namespace EF_CF_2.Entity
 
         // IX_OgrenciTcKimlik isminde index oluşturur.
         [Index(IsClustered = false,IsUnique = true)]
-        [MaxLength(11)]
+        [MaxLength(11)] // uzunluğu ksııtlamayınca hata verdi. 8000 byte'dan fazla olamaz açıklamasını buldum.
         public string OgrenciTcKimlik { get; set; }
 
         // aşağıdaki şekilde indekse isim verebiliriz. Clustered non-clustered olma durumunu ve

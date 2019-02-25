@@ -49,7 +49,7 @@ namespace EF_CF_2.Entity
         // (Derslik sınıfından da aynı tanımı yaptığım için bu satırı kapattım.)
         //[ForeignKey("SinifDerslikId")]
 
-            public int SinifDerslikId { get; set; }
+        public int SinifDerslikId { get; set; }
         public Derslik SinifDerslik { get; set; }
 
         // Altındaki özellik SinifOgretmeni nesnesinin foreign keyi olsun demektir(dolaylı).

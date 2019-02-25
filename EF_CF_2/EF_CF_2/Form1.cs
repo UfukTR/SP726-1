@@ -1,4 +1,6 @@
-﻿/// Mehmet DEMİR tarafından oluşturulmuştur. Sorularınız için: mail.mehmetdemir@gmail.com
+﻿using EF_CF_2.Context;
+using EF_CF_2.Entity;
+/// Mehmet DEMİR tarafından oluşturulmuştur. Sorularınız için: mail.mehmetdemir@gmail.com
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +55,9 @@ namespace EF_CF_2
             // Tools -> NuGet Package Manager -> Nuget Package Manager Console
             // enable-migrations –EnableAutomaticMigration:$true -Force
             // PM> Update-Database
+
+            SMARTPRO_Context ctx = new SMARTPRO_Context();
+            Ogretmen o1 = new Ogretmen();
         }
     }
 }

@@ -1,0 +1,16 @@
+﻿SORU:
+
+
+CINE_404: veri tabanı
+----------------------------
+Film(FilmID, FilmYonetmenID, FilmAd, 	)
+Yonetmen(YonetmenID, YonetmenAdSoyad, ......(Nesne veya ICollection'ları siz belirleyin) )
+Oyuncu(OyuncuID,OyuncuAdSoyad,OyuncuDogumTarih, ......(Nesne veya ICollection'ları siz belirleyin))
+
+(NOT: Çoka çok ilişkide ForeignKey i otomatik tanımlasın)
+
+[Required]	[NotMapped]	[Index]	tanımlamalarını kendiniz belirleyerek kullanınız.	
+
+            //  Tools -> NuGet Package Manager -> Nuget Package Manager Console
+            // PM> enable-migrations  –EnableAutomaticMigration:$true  -Force
+            // PM> Update-Database

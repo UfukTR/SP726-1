@@ -1,0 +1,15 @@
+﻿body
+{
+    font-family:Arial, Helvetica, sans-serif;
+}
+div.OzelDivler
+{
+    border:solid yellow 3px;
+     color:rgb(255, 99, 71);
+}
+div.GenelDivler 
+{
+    text-align:center;
+    color:#690030;
+   cursor:copy;
+}

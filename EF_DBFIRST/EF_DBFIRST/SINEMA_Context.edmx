@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SINEMAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="FilmID" />
+          </Key>
+          <Property Name="FilmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilmAdi" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="FilmKisaBilgi" Type="nvarchar" MaxLength="500" />
+          <Property Name="FilmFragmanLink" Type="nvarchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="Salon">
+          <Key>
+            <PropertyRef Name="SalonID" />
+          </Key>
+          <Property Name="SalonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalonAdi" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yayin">
+          <Key>
+            <PropertyRef Name="YayinID" />
+          </Key>
+          <Property Name="YayinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilmID" Type="int" Nullable="false" />
+          <Property Name="SalonID" Type="int" Nullable="false" />
+          <Property Name="FYZaman" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SINEMA.dbo.Yayin_Isimli' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Yayin_Isimli">
+          <Key>
+            <PropertyRef Name="FilmAdi" />
+            <PropertyRef Name="SalonAdi" />
+            <PropertyRef Name="FYZaman" />
+          </Key>
+          <Property Name="FilmAdi" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SalonAdi" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="FYZaman" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_FilmKaydet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="FilmAdi" Type="nvarchar" Mode="In" />
+          <Parameter Name="FilmKisaBilgi" Type="nvarchar" Mode="In" />
+          <Parameter Name="FilmFragmanLink" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SINEMAModelStoreContainer">
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salon" EntityType="Self.Salon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yayin" EntityType="Self.Yayin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yayin_Isimli" EntityType="Self.Yayin_Isimli" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Yayin_Isimli].[FilmAdi] AS [FilmAdi], 
+    [Yayin_Isimli].[SalonAdi] AS [SalonAdi], 
+    [Yayin_Isimli].[FYZaman] AS [FYZaman]
+    FROM [dbo].[Yayin_Isimli] AS [Yayin_Isimli]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SINEMAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="FilmID" />
+          </Key>
+          <Property Name="FilmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilmAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FilmKisaBilgi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FilmFragmanLink" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Salon">
+          <Key>
+            <PropertyRef Name="SalonID" />
+          </Key>
+          <Property Name="SalonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalonAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yayin">
+          <Key>
+            <PropertyRef Name="YayinID" />
+          </Key>
+          <Property Name="YayinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilmID" Type="Int32" Nullable="false" />
+          <Property Name="SalonID" Type="Int32" Nullable="false" />
+          <Property Name="FYZaman" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Yayin_Isimli">
+          <Key>
+            <PropertyRef Name="FilmAdi" />
+            <PropertyRef Name="SalonAdi" />
+            <PropertyRef Name="FYZaman" />
+          </Key>
+          <Property Name="FilmAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SalonAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FYZaman" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SINEMAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Films" EntityType="Self.Film" />
+          <EntitySet Name="Salons" EntityType="Self.Salon" />
+          <EntitySet Name="Yayins" EntityType="Self.Yayin" />
+          <EntitySet Name="Yayin_Isimli" EntityType="Self.Yayin_Isimli" />
+          <FunctionImport Name="SP_FilmKaydet">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="FilmAdi" Mode="In" Type="String" />
+            <Parameter Name="FilmKisaBilgi" Mode="In" Type="String" />
+            <Parameter Name="FilmFragmanLink" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SINEMAModelStoreContainer" CdmEntityContainer="SINEMAEntities">
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="SINEMAModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="FilmID" ColumnName="FilmID" />
+                <ScalarProperty Name="FilmAdi" ColumnName="FilmAdi" />
+                <ScalarProperty Name="FilmKisaBilgi" ColumnName="FilmKisaBilgi" />
+                <ScalarProperty Name="FilmFragmanLink" ColumnName="FilmFragmanLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SINEMAModel.Film">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SINEMAModel.Store.SP_FilmKaydet">
+                  <ScalarProperty Name="FilmFragmanLink" ParameterName="FilmFragmanLink" />
+                  <ScalarProperty Name="FilmKisaBilgi" ParameterName="FilmKisaBilgi" />
+                  <ScalarProperty Name="FilmAdi" ParameterName="FilmAdi" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salons">
+            <EntityTypeMapping TypeName="SINEMAModel.Salon">
+              <MappingFragment StoreEntitySet="Salon">
+                <ScalarProperty Name="SalonID" ColumnName="SalonID" />
+                <ScalarProperty Name="SalonAdi" ColumnName="SalonAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yayins">
+            <EntityTypeMapping TypeName="SINEMAModel.Yayin">
+              <MappingFragment StoreEntitySet="Yayin">
+                <ScalarProperty Name="YayinID" ColumnName="YayinID" />
+                <ScalarProperty Name="FilmID" ColumnName="FilmID" />
+                <ScalarProperty Name="SalonID" ColumnName="SalonID" />
+                <ScalarProperty Name="FYZaman" ColumnName="FYZaman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yayin_Isimli">
+            <EntityTypeMapping TypeName="SINEMAModel.Yayin_Isimli">
+              <MappingFragment StoreEntitySet="Yayin_Isimli">
+                <ScalarProperty Name="FilmAdi" ColumnName="FilmAdi" />
+                <ScalarProperty Name="SalonAdi" ColumnName="SalonAdi" />
+                <ScalarProperty Name="FYZaman" ColumnName="FYZaman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_FilmKaydet" FunctionName="SINEMAModel.Store.SP_FilmKaydet" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

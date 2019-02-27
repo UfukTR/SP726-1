@@ -3,9 +3,9 @@ body
 {
     font-family:Arial, Helvetica, sans-serif;
 }
-div.OzelDivler
+.OzelDivler
 {
-    border:solid yellow 3px;
+    border:solid blue 3px;
      color:rgb(255, 99, 71);
 }
 div.GenelDivler 

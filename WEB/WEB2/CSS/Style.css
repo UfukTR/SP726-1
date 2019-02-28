@@ -1,11 +1,21 @@
 ﻿body
 {
+   
 }
 div#ContainerDiv
 {
-    width:95%;
+    
+    width:900px;
     float:left;
     background:#b9ab69;
+    margin-left:calc(50% - 450px);
+}
+
+
+
+div.AnasayfaIcDiv
+{
+    background:#ABC888 !important;
 }
 
 div.AnasayfaDiv
@@ -13,12 +23,6 @@ div.AnasayfaDiv
     border: 3px solid tomato;
     margin: 10px;
     background:#b1d2f3;
-}
-div.AnasayfaIcDiv
-{
-    border: 3px solid tomato;
-    margin: 10px;
-    background:#ABC888;
 }
 
 div#UstDiv

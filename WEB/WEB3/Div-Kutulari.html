@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div#AnaDiv 
+        {
+            border:10px solid #078370;
+            padding:10px;
+
+            /*Div taşmalarını önleyen 1. Yöntem.*/
+            overflow:auto;
+        }
+        div.KutuDiv
+        {
+            border:8px solid #bd005c;
+            float: left; 
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin:5px;
+            
+        }
+        /*Div taşmalarını önleyen 2. Yöntem.*/
+        div.KutuDiv:last-child
+        {
+            float: none; 
+            clear: none; 
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="AnaDiv">
+        <div class="KutuDiv">
+            <img src="IMG\redkit.jpg" alt="" width="100" height="100" />
+        </div>
+        <div class="KutuDiv">
+            <img src="IMG\redkit.jpg" alt="" width="100" height="100" />
+        </div>
+        <div class="KutuDiv">
+            <img src="IMG\redkit.jpg" alt="" width="100" height="100" />
+        </div>
+        <div class="KutuDiv">
+            <img src="IMG\redkit.jpg" alt="" width="100" height="100" />
+        </div>
+        <div class="KutuDiv">
+            <img src="IMG\redkit.jpg" alt="" width="100" height="100" />
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title></title>
+    <style>
+        main
+        {
+            width: 100%;
+            float: left;
+            display: block;
+            font-size:24px;
+            overflow:auto;
+        }
+
+        header
+        {
+            background-color:#0f6dd5;
+            height:150px;
+        }
+
+        nav
+        {
+            background-color:#ffd800;
+            height:50px;
+        }
+
+        .sectionana
+        {
+            display: block;
+            float: left;
+            width:100%;
+        }
+
+        .section1
+        {
+            display:inline-block;
+            width:70%;
+            float:left;
+            height:600px;
+        }
+
+        .section1 > section
+        {
+            height:70%;
+            background-color: #209e90;
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+
+        article
+        {
+            display:block;
+            background-color:#f1afeb;
+            height:30%;
+        }
+
+        aside
+        {
+            display:inline-block;
+            width:30%;
+            height:600px;
+            float:right;
+            background: #ff5982;
+        }
+
+        footer
+        {
+            float:left;
+            display:block;
+            height:150px;
+            background-color:#51dc36;
+            width: 100%;
+        }
+        section img
+        {
+            max-width:100%;
+            max-height:300px;
+            padding: 5px;
+            background-color: bisque;
+        }
+
+        /* RESPONSIVE DESIGN */
+        /* Ekran Çözünürlüğü 800px veya daha az olduğunda uygulansın. */
+        @media only screen and (max-width:800px) 
+        {
+            section,article,aside {
+                display:block !important;
+                width: 100% !important;
+                padding:0 !important;
+                /*
+                    Varsayılan CSS stilinde %70 %30 genişliklerle yanyana duran elementler alt alta dizilsin
+                    Genişlikleri 100% olsun.
+                    Padding:0 olsun.
+                */
+            }
+            header,nav,section,article,aside,footer
+            {
+                text-align:center;
+                /*
+                    Yukarıdaki elementlerde içerik ortalansın.
+                */
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            img
+            {
+                width:250px !important;
+                height:auto !important;
+                /*
+                    Maksimum genişlik 600px olduğunda img genişliği 250px olarak ayarlansın.
+                    img yüksekliği otomatik ayarlansın.
+                */
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            img
+            {
+                width:300px !important;
+                height:auto !important;
+                /*
+                    Maksimum genişlik 600px olduğunda img genişliği 250px olarak ayarlansın.
+                    img yüksekliği otomatik ayarlansın.
+                */
+            }
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) 
+        {
+            img
+            {
+                width:350px !important;
+                height:auto !important;
+                /*
+                    Maksimum genişlik 600px olduğunda img genişliği 250px olarak ayarlansın.
+                    img yüksekliği otomatik ayarlansın.
+                */
+            }
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) 
+        {
+            img
+            {
+                width:450px !important;
+                height:auto !important;
+                /*
+                    Maksimum genişlik 600px olduğunda img genişliği 250px olarak ayarlansın.
+                    img yüksekliği otomatik ayarlansın.
+                */
+            }
+        }
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) 
+        {
+            img
+            {
+                width:600px !important;
+                height:auto !important;
+                /*
+                    Maksimum genişlik 600px olduğunda img genişliği 250px olarak ayarlansın.
+                    img yüksekliği otomatik ayarlansın.
+                */
+            }
+        }
+
+
+
+
+
+
+
+        /*@media only screen and (max-width:480px) 
+        {
+            section,article,aside {
+                display:none;
+                /*
+                    Varsayılan CSS stilinde %70 %30 genişliklerle yanyana duran elementler alt alta dizilsin
+                    Genişlikleri 100% olsun.
+                */
+            }
+        }
+                @media only screen and (max-width:400px) 
+        {
+            section,article,aside {
+                display:none;
+                /*
+                    Varsayılan CSS stilinde %70 %30 genişliklerle yanyana duran elementler alt alta dizilsin
+                    Genişlikleri 100% olsun.
+                */
+            }
+        }*/
+
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            HEADER
+        </header>
+        <nav>
+            NAV
+        </nav>
+        <section class="sectionana">
+            <section class="section1">
+                <section>
+                    <section style="width:100%; float:left;">
+                        <p>SECTION</p>
+                    </section>
+                    <img src="IMG\image1.jpg" alt="IMAGE1.JPG"  />
+                </section>
+                <article>
+                    ARTICLE
+                </article>
+            </section>
+            <aside>
+                ASIDE
+            </aside>
+        </section>
+        <footer>
+            FOOTER
+        </footer>
+    </main>
+
+</body>
+</html>

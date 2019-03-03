@@ -34,6 +34,7 @@ namespace EF_CODEFIRST
             ctx.Ogretmens.Add(Ogr1);
             ctx.Ogrencis.Add(o1);
             ctx.SaveChanges();
+
         }
     }
 }

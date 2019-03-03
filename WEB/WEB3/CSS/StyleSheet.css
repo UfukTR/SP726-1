@@ -70,3 +70,8 @@ div#nav ul li a:hover:not(.iletisim)
     background-color:crimson;
     color:#d5d5d5;
 }
+
+div.tests
+{
+    width:20%;
+}
